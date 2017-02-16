@@ -1,0 +1,11 @@
+= form_for :auth, url: '/user_token', remote: true,
+           html: { class: 'log-in' } do |f|
+  = f.text_field :email, value: 'gdanialq@gmail.com'
+  = f.password_field :password, value: '123456'
+  = f.submit 'Submit'
+
+#games
+  = link_to 'See gams', games_path, class: 'gams-link'
+  %ul
+
+
