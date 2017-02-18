@@ -14,8 +14,10 @@ module BackgammonApi
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins ENV['ALOWED_ORIGIN']
-        resource '*', headers: :any, methods: [:get, :post, :put, :options]
+        origins ENV['ALOWED_ORIGIN'].to_s
+        resource '*',
+                 headers: :any,
+                 methods: [:get, :post, :put, :patch, :options, :delete]
       end
     end
   end

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :user_games
+  has_many :user_games, dependent: :destroy
   has_many :games, through: :user_games
 
   validates :email, presence: true
