@@ -1,12 +1,16 @@
 class GamesController < ApplicationController
   before_action :authenticate_user
-  before_action :set_game, only: [:destroy, :update]
+  before_action :set_game, only: [:destroy, :update, :show]
   before_action :set_user_game, only: [:update]
   before_action :set_games, only: [:index]
   before_action :set_opponent, only: [:create]
 
   def index
     render json: @games, status: :ok
+  end
+
+  def show
+    render json: @game.to_hash, status: :ok
   end
 
   def create
@@ -24,7 +28,7 @@ class GamesController < ApplicationController
   end
 
   def update
-    @user_game.update_attributes(accepted: game_params[:accepted])
+    @user_game.update_attributes game_params
     render json: @game.to_hash, status: :ok
   end
 
@@ -58,7 +62,7 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:name, :accepted)
+    params.require(:game).permit(:name, :accepted, :status)
   end
 
   def opponent_params
