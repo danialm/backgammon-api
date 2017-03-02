@@ -22,6 +22,10 @@ class User < ApplicationRecord
     { name: try(:name) || 'No Name', email: email }
   end
 
+  def valid_token?(token)
+    reset_pass_token && reset_pass_token == token
+  end
+
   protected
 
   def normalize_email

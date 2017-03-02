@@ -11,6 +11,16 @@ Things you may want to cover:
 
 * Configuration
 
+  Environment variables you neet to set:
+
+  Email:
+    ENV['BG_EMAIL_DOMAIN']='gmail.com'
+    ENV['BG_EMAIL_USER']='username'
+    ENV['BG_EMAIL_PASS']='password'
+
+  Allowed origin:
+    ENV['BG_ALOWED_ORIGIN']='http://localhost:3001'
+
 * Database creation
 
 * Database initialization
