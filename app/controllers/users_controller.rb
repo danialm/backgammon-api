@@ -1,33 +1,33 @@
 class UsersController < ApplicationController
   protect_from_forgery with: :null_session
 
-  before_action :authenticate_user, except: [:index, :create]
+  before_action :authenticate_user, only: [:update, :show], raise: false
   before_action :create_user, only: [:create]
   before_action :set_users, only: [:index]
   before_action :update_user, only: [:update]
 
   def update
-    render json: {}, status: 200
+    render json: current_user, status: :ok
   end
 
   def index
-    render json: @users, status: 200
+    render json: @users.map(&:to_hash), status: :ok
   end
 
   def create
-    render json: {}, status: 201
+    render json: {}, status: :created
   end
 
   def show
-    render json: current_user.to_hash, status: 200
+    render json: current_user.to_hash, status: :ok
   end
 
   private
 
   def update_user
-    user = current_user.update_attributes user_edit_params[:user]
-    unless user.errors.blank?
-      render json: user.errors.full_messages, status: 400
+    result = current_user.update_attributes user_params
+    unless result
+      render json: user.errors.full_messages, status: :bad_request
     end
   end
 
@@ -39,15 +39,11 @@ class UsersController < ApplicationController
     user = User.create user_params
 
     unless user.errors.blank?
-      render json: user.errors.full_messages, status: 406
+      render json: user.errors.full_messages, status: :bad_request
     end
   end
 
   def user_params
-    params.require(:user).permit(:email, :password)
-  end
-
-  def user_edit_params
-    user_params.permit(:password)
+    params.require(:user).permit(:email, :password, :name)
   end
 end
