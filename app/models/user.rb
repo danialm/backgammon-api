@@ -35,6 +35,6 @@ class User < ApplicationRecord
 
   def self.email_to_lowecase(email)
     email_array = email.split('@')
-    [email_array[0], email_array[1].downcase].join('@')
+    [email_array[0], email_array[1].try(:downcase)].join('@')
   end
 end
