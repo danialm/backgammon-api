@@ -7,7 +7,7 @@ class PasswordsController < ApplicationController
   before_action :verify_token, only: [:update]
 
   def edit
-    UserMailer.forget_password_email(@user, @token).deliver_now
+    UserMailer.forget_password_email(@user, @token).deliver_later
     render json: {}, status: :ok
   end
 
@@ -23,7 +23,7 @@ class PasswordsController < ApplicationController
 
   def set_user
     @user = User.find_by email: user_params[:email]
-    render json: ['User not found'], status: :not_found unless @user
+    render json: 'user', status: :not_found unless @user
   end
 
   def set_token
@@ -33,7 +33,7 @@ class PasswordsController < ApplicationController
   end
 
   def verify_token
-    render json: ['Invalid token'], status: :forbidden unless
+    render json: 'invalid token', status: :forbidden unless
       @user.valid_token?(user_params[:token])
   end
 

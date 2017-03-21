@@ -35,8 +35,8 @@ class GamesController < ApplicationController
   private
 
   def set_game
-    @game = Game.find params[:id]
-    render json: 'Game not found', status: :not_found if @game.blank?
+    @game = Game.find_by id: params[:id]
+    render json: 'game', status: :not_found if @game.blank?
   end
 
   def set_user_game
@@ -53,7 +53,7 @@ class GamesController < ApplicationController
     res = nil
 
     if @opponent.blank?
-      res = { json: 'User not found', status: :not_found }
+      res = { json: 'user', status: :not_found }
     elsif @opponent.id == current_user.id
       res = { json: 'Unacceptable user', status: :bad_request }
     end
