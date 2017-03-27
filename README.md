@@ -3,6 +3,8 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+Start pg: `$pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start`
+
 Things you may want to cover:
 
 * Ruby version
