@@ -3,7 +3,7 @@ ruby '2.3.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.6.2'
 # works on heroku
 gem 'pg', '~> 0.18.4'
 # Use SCSS for stylesheets

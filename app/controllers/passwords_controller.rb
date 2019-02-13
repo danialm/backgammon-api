@@ -23,7 +23,7 @@ class PasswordsController < ApplicationController
 
   def set_user
     @user = User.find_by email: user_params[:email]
-    render json: 'user', status: :not_found unless @user
+    render json: ['user'], status: :not_found unless @user
   end
 
   def set_token
@@ -33,7 +33,7 @@ class PasswordsController < ApplicationController
   end
 
   def verify_token
-    render json: 'invalid token', status: :forbidden unless
+    render json: ['invalid token'], status: :forbidden unless
       @user.valid_token?(user_params[:token])
   end
 
