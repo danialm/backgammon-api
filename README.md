@@ -33,8 +33,8 @@ Things you may want to cover:
 * How to run the test suite
   `$ rspec`
 
-* Deployment instructions
-  `$  git push heroku master`
+* Deployment instructions(
+  Pushing to master branch )`$  git push origin master`) will run an automatic deploy.
 =======
 # backgammon-api
 this is the end point for backgammon game
