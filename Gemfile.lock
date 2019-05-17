@@ -39,6 +39,10 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    axlsx (2.0.1)
+      htmlentities (~> 4.3.1)
+      nokogiri (>= 1.4.1)
+      rubyzip (~> 1.0.0)
     bcrypt (3.1.11)
     builder (3.2.3)
     byebug (9.0.6)
@@ -58,6 +62,7 @@ GEM
       activesupport (>= 4.1.0)
     haml (4.0.7)
       tilt
+    htmlentities (4.3.4)
     i18n (0.8.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -121,6 +126,8 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
+    redis (3.3.5)
+    rubyzip (1.0.0)
     sass (3.4.23)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -163,6 +170,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  axlsx (~> 2.0, >= 2.0.1)
   byebug
   coffee-rails (~> 4.2)
   haml (~> 4.0, >= 4.0.7)
@@ -174,6 +182,7 @@ DEPENDENCIES
   puma (~> 3.6.2)
   rack-cors
   rails (~> 5.0.0, >= 5.0.0.1)
+  redis (~> 3.0)
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
@@ -186,4 +195,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.15.4
+   1.16.3
